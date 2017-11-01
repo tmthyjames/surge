@@ -19,3 +19,7 @@ def subtraction(grade=None, operation=None):
         'grade/{grade}/{operation}.html'.format(
             grade=grade, operation=operation
         ), operation=operation, grade=grade)
+
+@api_bp.route('/results/')
+def results():
+    return render_template('results.html')

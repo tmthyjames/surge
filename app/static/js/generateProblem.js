@@ -1,5 +1,5 @@
-var getProblem = function(operation){
-	$.get('/api/generate/2/' + operation, function(d){
+var getProblem = function(grade, operation){
+	$.get('/api/generate/' + grade + '/' + operation, function(d){
 		$('#problem').html(
 			d.text
 			+ '<div class="row">'
@@ -14,9 +14,9 @@ var getProblem = function(operation){
 			+ '</div>'
 		);
 		$('#submit_answer').on('click', function(event){
-			var answer = $('#answer').val().trim();
+			var answer = $('#answer').val().trim() || '0';
 			var terms = d.problem.terms;
-			$.get('/api/check/' + operation + '/' + terms[0] + '/' + terms[1] + '/' + answer, function(data){
+			$.get('/api/check/' + grade + '/' + operation + '/' + terms[0] + '/' + terms[1] + '/' + answer, function(data){
 				if (data.correct){
 					$.notify({
 						title: 'Correct!!',
@@ -29,7 +29,7 @@ var getProblem = function(operation){
 							'<span data-notify="message">{2}</span>' +
 						'</div>'
 					});
-					getProblem(operation);
+					getProblem(grade, operation);
 				} else {
 					$.notify({
 						title: 'Incorrect...',

@@ -2,9 +2,12 @@
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/datatables.min.css"/>
+		 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="/static/js/bootstrap-notify.min.js"></script>
+		<script type="text/javascript" src="/static/js/datatables.min.js"></script>
 		<script src="/static/js/generateProblem.js"></script>
 	</head>
 	<style>
@@ -48,6 +51,7 @@
 		      <li class=""><a href="#">Tutors</a></li>
 		      <li class=""><a href="/2/addition">Addition</a></li>
 		      <li class=""><a href="/2/subtraction">Subtraction</a></li>
+		      <li class="pull-right"><a href="/results">Check Work</a></li>
 		    </ul>
 		  </div>
 		</nav>
@@ -55,6 +59,7 @@
 		    <div id="problem" class="col-md-8 col-md-offset-4" style="font-size:80px;">
 		    </div>
 		</div>
+{% block content %} {% endblock %}
 {% block js %}{% endblock %}
 	</body>
 </html>

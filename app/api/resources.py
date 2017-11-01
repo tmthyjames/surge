@@ -2,13 +2,19 @@ from flask import jsonify
 from flask_restful import Resource
 from math_.math_problems import MathProblem, CheckMathProblem
 
-class Surge(Resource):
+class Generate(Resource):
 
     def get(self, grade=None, operation=None):
+        operators = {
+            'addition': " + ",
+            'subtraction': " - "
+        }
+        problem = getattr(MathProblem, operation)(grade)
         return jsonify({
             'grade': grade,
             'operation': operation,
-            'problem': getattr(MathProblem, operation)(grade)
+            'problem': problem,
+            'text': str(problem['terms'][0]) + operators[operation] + str(problem['terms'][1]) + " = "
         })
 
 class Check(Resource):

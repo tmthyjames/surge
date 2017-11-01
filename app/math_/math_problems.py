@@ -35,3 +35,11 @@ class CheckMathProblem(object):
             'correct': answer == int(submitted_answer),
             'answer': answer
         }
+
+    @staticmethod
+    def subtraction(term1, term2, submitted_answer):
+        answer = (int(term1) - int(term2))
+        return {
+            'correct': answer == int(submitted_answer),
+            'answer': answer
+        }

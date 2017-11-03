@@ -1,5 +1,5 @@
 # surge
-A math problem generator for elementary school kids that gets more difficult as the user gets better, powered by a flask restful API.
+A math problem generator for my son that gets more difficult as he gets better, powered by a flask restful API.
 
 To start:
 

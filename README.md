@@ -6,6 +6,9 @@ To start:
 ```
 $ git clone https://github.com/tmthyjames/surge.git
 $ cd surge
+$ pip install -r requirements.txt
+$ createdb surge
+$ psql -f sql/SURGE-#1.sql -d surge
 $ python app/app.py
 ```
 

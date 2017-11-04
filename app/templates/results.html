@@ -27,7 +27,13 @@
 
 {% block js %}
 <script type="text/javascript">
+	Number.prototype.toLocalDate = function () {
+	    var value = new Date(this);
 
+	    value.setHours(value.getHours() + (value.getTimezoneOffset() / 60));
+
+	    return value;
+	};
 	$.get('/api/results/', function(data){
 		var table = $('table.problems').DataTable({
 		    lengthChange: false,
@@ -61,7 +67,7 @@
 		    		return d.grade;
 		    	}},
 		    	{data: null, render: function(d){
-		    		return d.dateof;
+		    		return new Date(d.dateof*1000);
 		    	}}
 		    ],
 		    createdRow: function ( row, data, index ) {

@@ -12,3 +12,5 @@ class Problem(db.Model):
     grade = db.Column(db.Integer, nullable=False)
     operation = db.Column(db.String, nullable=False)
     dateof = db.Column(db.DateTime, nullable=False)
+    textrep = db.Column(db.String)
+    type = db.Column(db.String)

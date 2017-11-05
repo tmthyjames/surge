@@ -1,5 +1,15 @@
 var getProblem = function(grade, operation){
-	$.get('/api/generate/' + grade + '/' + operation, function(d){
+	var types = ['simple_word', 'nonword']
+	var type = types[Math.floor(Math.random()*types.length)];
+	var endpoint = '/api/generate/' + grade + "/" + type + '/' + operation;
+	var random = window.location.href.indexOf('random');
+	if (random >= 0){
+		operations = ['addition', 'subtraction'];
+		operation = operations[Math.floor(Math.random()*operations.length)];
+		endpoint = '/api/generate/' + grade + "/" + type + '/' + operation
+	}
+
+	$.get(endpoint, function(d){
 		$('#problem').html(
 			d.text
 			+ '<div class="row">'
@@ -16,7 +26,13 @@ var getProblem = function(grade, operation){
 		$('#submit_answer').on('click', function(event){
 			var answer = $('#answer').val().trim() || '0';
 			var terms = d.problem.terms;
-			$.get('/api/check/' + grade + '/' + operation + '/' + terms[0] + '/' + terms[1] + '/' + answer, function(data){
+			var checkEndPoint;
+			if (type == 'simple_word'){
+				checkEndPoint = '/api/check/' + grade + "/" + type + "/" + operation + "/" + answer + "/" + d.problem.answer + "/?problem="+d.problem.problem;
+			} else {
+				checkEndPoint = '/api/check/' + grade + "/" + type + '/' + operation + '/' + terms[0] + '/' + terms[1] + '/' + answer + "/";
+			}
+			$.get(checkEndPoint, function(data){
 				if (data.correct){
 					$.notify({
 						title: 'Correct!!',

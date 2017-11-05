@@ -34,7 +34,9 @@ CREATE TABLE problems (
     submitted_answer integer,
     grade integer,
     operation character varying(60),
-    dateof bigint
+    dateof bigint,
+    textrep character varying(5000),
+    type character varying(100)
 );
 
 

@@ -13,7 +13,7 @@ var getProblem = function(grade, operation){
 		$('#problem').html(
 			d.text
 			+ '<div class="row">'
-			  + '<div class="col-lg-4">'
+			  + '<div class="col-lg-6">'
 			    + '<div class="input-group">'
 			      + '<span class="input-group-btn">'
 			        + '<button id="submit_answer" class="btn btn-primary" type="button">Submit!</button>'

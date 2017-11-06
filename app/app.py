@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_restful import Api
 
-from api.resources import (Generate, Check, 
-    Results, GenerateWordProblem, CheckWordProblem)
+from api.resources import (
+    Generate, Check, Results, 
+    GenerateWordProblem, CheckWordProblem
+)
 from views.views import api_bp
 from problems.models import db
 from settings import Config

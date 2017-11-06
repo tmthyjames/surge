@@ -1,3 +1,4 @@
+var counter = 1;
 var getProblem = function(grade, operation){
 	var types = ['simple_word', 'nonword']
 	var type = types[Math.floor(Math.random()*types.length)];
@@ -10,6 +11,8 @@ var getProblem = function(grade, operation){
 	}
 
 	$.get(endpoint, function(d){
+		$('#counter').html("Progress: " + counter + "/20");
+		console.log(counter);
 		$('#problem').html(
 			d.text
 			+ '<div class="row">'
@@ -45,6 +48,7 @@ var getProblem = function(grade, operation){
 							'<span data-notify="message">{2}</span>' +
 						'</div>'
 					});
+					counter += 1;
 					getProblem(grade, operation);
 				} else {
 					$.notify({
